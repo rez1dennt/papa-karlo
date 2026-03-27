@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Кухни — Папа Карло</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+
+    <main class="catalog-page">
+      <div class="catalog-intro">
+        <p>цены указаны примерно<br>чтобы вы могли ориентироваться<br>что вам нужно :)</p>
+      </div>
+
+      <div class="photo-grid" id="photoGrid"></div>
+
+      <div class="catalog-bottom">
+        <h2 class="section-title">посмотреть шкафы</h2>
+        <a href="shkafy.html" class="btn btn-black">шкафы</a>
+
+        <h2 class="section-title" style="margin-top:10px">позвонить</h2>
+        <a href="tel:89878670145" class="btn btn-phone">89878670145</a>
+
+        <h2 class="section-title" style="margin-top:10px">записаться на замер</h2>
+        <div class="social-row">
+          <a href="#" class="social-btn vk" target="_blank" rel="noopener" aria-label="ВКонтакте">
+            <img src="/images/logo-vk.png" alt="">
+          </a>
+          <a href="#" class="social-btn telegram" target="_blank" rel="noopener" aria-label="Telegram">
+            <img src="/images/logo-telegram.svg" alt="Telegram">
+          </a>
+          <a href="#" class="social-btn viber" target="_blank" rel="noopener" aria-label="MAX">
+            <img src="/images/Логотип_MAX.svg" alt="MAX">
+          </a>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-top">
+        <a href="index.html" class="footer-logo-link">
+          <div class="footer-logo">
+            <img src="/images/logo.jpg" alt="Папа Карло">
+          </div>
+        </a>
+        <div class="footer-brand">
+          <p class="footer-brand-name">Папа Карло</p>
+          <p class="footer-brand-tagline">индивидуальная мебель</p>
+        </div>
+      </div>
+      <div class="footer-sep"></div>
+      <div class="footer-contacts">
+        <p><span class="fc-label">адрес</span>460004, г. Оренбург, ул. Юркина, 9а к10</p>
+        <p><span class="fc-label">e-mail</span><a href="mailto:papokarlo@mail.ru">papokarlo@mail.ru</a></p>
+        <p><span class="fc-label">тел.</span><a href="tel:+79878974710">+7 (987) 897-47-10</a></p>
+      </div>
+      <div class="footer-legal">
+        <p>ИП «Берекетов Э.Б.»&nbsp;&nbsp;·&nbsp;&nbsp;ОГРН 7385239838&nbsp;&nbsp;·&nbsp;&nbsp;КПП 74373448</p>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- ГАЛЕРЕЯ ЛАЙТБОКС -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" onclick="closeLightbox()">&#x2715;</button>
+    <div class="lightbox-img-wrap">
+      <img class="lightbox-img" id="lightboxImg" src="" alt="">
+    </div>
+    <button class="lightbox-prev" onclick="prevPhoto()">&#8249;</button>
+    <button class="lightbox-next" onclick="nextPhoto()">&#8250;</button>
+    <div class="lightbox-counter" id="lightboxCounter"></div>
+  </div>
+
+  <script>
+    const FOLDER = '/images/kuhni/';
+    const MAX = 50;
+    let currentIndex = 0;
+    let photos = [];
+
+    function buildGrid() {
+      const grid = document.getElementById('photoGrid');
+      for (let i = 1; i <= MAX; i++) {
+        const src = FOLDER + i + '.jpg';
+        const item = document.createElement('div');
+        item.className = 'photo-item';
+        item.dataset.src = src;
+
+        const img = document.createElement('img');
+        img.src = src;
+        img.alt = 'Кухня ' + i;
+        img.loading = 'lazy';
+
+        // Если фото нет — ячейку просто убираем
+        img.onerror = () => item.remove();
+
+        item.appendChild(img);
+        item.addEventListener('click', () => {
+          const items = Array.from(grid.querySelectorAll('.photo-item'));
+          photos = items.map(el => el.dataset.src);
+          openLightbox(items.indexOf(item));
+        });
+        grid.appendChild(item);
+      }
+    }
+
+    function openLightbox(idx) {
+      currentIndex = idx;
+      updateLightbox();
+      document.getElementById('lightbox').classList.add('open');
+      document.documentElement.style.overflow = 'hidden';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('open');
+      document.documentElement.style.overflow = '';
+      document.body.style.overflow = '';
+    }
+
+    function updateLightbox() {
+      document.getElementById('lightboxImg').src = photos[currentIndex];
+      document.getElementById('lightboxCounter').textContent =
+        (currentIndex + 1) + ' / ' + photos.length;
+    }
+
+    function prevPhoto() {
+      currentIndex = (currentIndex - 1 + photos.length) % photos.length;
+      updateLightbox();
+    }
+
+    function nextPhoto() {
+      currentIndex = (currentIndex + 1) % photos.length;
+      updateLightbox();
+    }
+
+    document.getElementById('lightbox').addEventListener('click', function (e) {
+      if (e.target === this || e.target.classList.contains('lightbox-img-wrap')) {
+        closeLightbox();
+      }
+    });
+
+    let touchStartX = 0;
+    const lb = document.getElementById('lightbox');
+    lb.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+    lb.addEventListener('touchend', e => {
+      const diff = touchStartX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 48) diff > 0 ? nextPhoto() : prevPhoto();
+    }, { passive: true });
+
+    document.addEventListener('keydown', e => {
+      if (!lb.classList.contains('open')) return;
+      if (e.key === 'ArrowLeft') prevPhoto();
+      if (e.key === 'ArrowRight') nextPhoto();
+      if (e.key === 'Escape') closeLightbox();
+    });
+
+    buildGrid();
+  </script>
+</body>
+</html>

@@ -1,0 +1,529 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
+  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 600;
+  background: #f2f2f7;
+  color: #111111;
+}
+
+.container {
+  max-width: 480px;
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #f2f2f7;
+}
+
+/* ==================== MAIN PAGE ==================== */
+
+.main-page {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 44px 24px 0;
+}
+
+.main-title {
+  font-size: 26px;
+  font-weight: 900;
+  text-align: center;
+  line-height: 1.25;
+  margin-bottom: 28px;
+  letter-spacing: -0.3px;
+}
+
+.logo-circle {
+  width: 210px;
+  height: 210px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 30px;
+  box-shadow: 0 6px 28px rgba(0, 0, 0, 0.22);
+}
+
+.logo-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transform: scale(1.55);
+}
+
+.catalog-label {
+  font-size: 19px;
+  font-weight: 700;
+  text-align: center;
+  line-height: 1.45;
+  margin-bottom: 6px;
+}
+
+.pointer-emoji {
+  font-size: 34px;
+  text-align: center;
+  margin-bottom: 22px;
+  line-height: 1;
+}
+
+/* ==================== BUTTONS ==================== */
+
+.btn-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 44px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  min-width: 210px;
+  min-height: 58px;
+  padding: 15px 52px;
+  border-radius: 36px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 19px;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.12s, box-shadow 0.12s;
+  letter-spacing: 0.6px;
+}
+
+.btn-black {
+  background: #1a1a1a;
+  color: #ffffff;
+  box-shadow: 0 0 32px rgba(0, 0, 0, 0.30), 0 4px 14px rgba(0, 0, 0, 0.22);
+}
+
+.btn-black:active {
+  transform: scale(0.97);
+  box-shadow: 0 0 14px rgba(0, 0, 0, 0.16), 0 2px 6px rgba(0, 0, 0, 0.14);
+}
+
+.btn-phone {
+  background: #1a1a1a;
+  color: #f5a623;
+  font-size: 22px;
+  letter-spacing: 1px;
+  box-shadow: 0 0 22px rgba(0, 0, 0, 0.22), 0 2px 8px rgba(0, 0, 0, 0.18);
+}
+
+.btn-phone:active {
+  transform: scale(0.97);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.14);
+}
+
+/* ==================== CONTACT SECTION ==================== */
+
+.contact-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+  margin-bottom: 44px;
+}
+
+.section-title {
+  font-size: 21px;
+  font-weight: 900;
+  text-align: center;
+  letter-spacing: -0.2px;
+}
+
+.social-row {
+  display: flex;
+  gap: 22px;
+  justify-content: center;
+  align-items: center;
+}
+
+.social-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 62px;
+  height: 62px;
+  text-decoration: none;
+  transition: transform 0.12s;
+  flex-shrink: 0;
+}
+
+.social-btn:active {
+  transform: scale(0.93);
+}
+
+.social-btn.vk {
+  background: #0077FF;
+  border-radius: 18px;
+}
+
+.social-btn.telegram {
+
+  border-radius: 50%;
+  padding: 16px;
+}
+
+.social-btn.viber {
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.social-btn svg,
+.social-btn img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.social-btn.telegram svg,
+.social-btn.telegram img {
+  width: 100%;
+  height: 100%;
+}
+
+.btn-reviews {
+  min-height: 54px;
+  font-size: 18px;
+  padding: 14px 48px;
+}
+
+/* ==================== FOOTER ==================== */
+
+.footer,
+.footer * {
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 400;
+}
+
+.footer {
+  background: #161616;
+  margin-top: 44px;
+  overflow: hidden;
+}
+
+/* Золотая линия сверху */
+.footer::before {
+  content: '';
+  display: block;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, #f5a623 50%, transparent 100%);
+}
+
+.footer-top {
+  padding: 24px 22px 0;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.footer-logo-link {
+  display: block;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.footer-logo {
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid rgba(245, 166, 35, 0.45);
+}
+
+.footer-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.footer-brand-name {
+  font-size: 18px;
+  font-weight: 800;
+  color: #f5a623;
+  letter-spacing: -0.2px;
+}
+
+.footer-brand-tagline {
+  font-size: 12px;
+  color: #666;
+  letter-spacing: 0.4px;
+}
+
+.footer-sep {
+  margin: 18px 22px 0;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.footer-contacts {
+  padding: 16px 22px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.footer-contacts p {
+  font-size: 13.5px;
+  color: #b8b8b8;
+  line-height: 1.5;
+}
+
+.footer-contacts a {
+  color: #b8b8b8;
+  text-decoration: none;
+}
+
+.fc-label {
+  display: inline-block;
+  color: #f5a623;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.9px;
+  margin-right: 7px;
+  vertical-align: middle;
+}
+
+.footer-legal {
+  padding: 14px 22px 30px;
+}
+
+.footer-legal p {
+  font-size: 11px;
+  color: #444;
+  line-height: 1.7;
+}
+
+/* ==================== CATALOG PAGE ==================== */
+
+.catalog-page {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.catalog-intro {
+  padding: 28px 20px 18px;
+  text-align: center;
+}
+
+.catalog-intro p {
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.55;
+  text-align: center;
+}
+
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  padding: 0 2px 2px;
+}
+
+.photo-item {
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  cursor: pointer;
+  background: #c8c8c8;
+  position: relative;
+}
+
+.photo-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.15s;
+}
+
+.photo-item:active img {
+  transform: scale(0.96);
+}
+
+.photo-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #d2d2d2;
+  color: #aaaaaa;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* ==================== CATALOG BOTTOM ==================== */
+
+.catalog-bottom {
+  padding: 40px 24px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.catalog-bottom .section-title {
+  margin-top: 10px;
+}
+
+/* ==================== LIGHTBOX ==================== */
+
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(20, 18, 14, 0.72);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 9999;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox.open {
+  display: flex;
+}
+
+.lightbox-img-wrap {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 70px 0 56px;
+}
+
+.lightbox-img {
+  max-width: 94%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+  border-radius: 10px;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* Кнопка закрыть */
+.lightbox-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 44px;
+  height: 44px;
+  background: #1a1a1a;
+  border: 1.5px solid rgba(245, 166, 35, 0.5);
+  border-radius: 50%;
+  color: #f5a623;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+}
+
+.lightbox-close:active {
+  background: #2a2a2a;
+  transform: scale(0.93);
+}
+
+/* Кнопки влево / вправо */
+.lightbox-prev,
+.lightbox-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 72px;
+  background: #1a1a1a;
+  border: 1.5px solid rgba(245, 166, 35, 0.4);
+  border-radius: 12px;
+  color: #f5a623;
+  font-size: 26px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  touch-action: manipulation;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.lightbox-prev { left: 10px; }
+.lightbox-next { right: 10px; }
+
+.lightbox-prev:active,
+.lightbox-next:active {
+  background: #2a2a2a;
+  transform: translateY(-50%) scale(0.95);
+}
+
+/* Счётчик */
+.lightbox-counter {
+  position: absolute;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1a1a1a;
+  border: 1px solid rgba(245, 166, 35, 0.3);
+  border-radius: 20px;
+  padding: 5px 16px;
+  color: #f5a623;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+}
+
+/* ==================== SMALL PHONES ==================== */
+
+@media (max-width: 360px) {
+  .main-title { font-size: 23px; }
+  .logo-circle { width: 180px; height: 180px; }
+  .catalog-label { font-size: 17px; }
+  .btn { font-size: 18px; min-height: 56px; }
+  .btn-phone { font-size: 19px; }
+  .social-btn { width: 64px; height: 64px; }
+  .section-title { font-size: 19px; }
+  .catalog-intro p { font-size: 15px; }
+}
+
+@media (max-width: 320px) {
+  .main-title { font-size: 20px; }
+  .logo-circle { width: 155px; height: 155px; }
+  .social-row { gap: 14px; }
+  .social-btn { width: 58px; height: 58px; }
+  .btn { font-size: 17px; min-height: 52px; }
+}
