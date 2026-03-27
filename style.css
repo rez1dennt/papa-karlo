@@ -37,7 +37,7 @@ html, body {
 }
 
 .main-title {
-  font-size: 21px;
+  font-size: 19px;
   font-weight: 600;
   text-align: center;
   line-height: 1.25;
@@ -100,6 +100,7 @@ html, body {
   font-family: 'Montserrat', sans-serif;
   font-size: 19px;
   font-weight: 600;
+  line-height: 1;
   text-align: center;
   text-decoration: none;
   border: none;
@@ -110,7 +111,7 @@ html, body {
 
 .btn-black {
   background: #1a1a1a;
-  color: #ffffff;
+  color: #f5a623;
   box-shadow: 0 0 32px rgba(0, 0, 0, 0.30), 0 4px 14px rgba(0, 0, 0, 0.22);
 }
 
@@ -196,11 +197,6 @@ html, body {
   object-fit: cover;
 }
 
-.btn-reviews {
-  min-height: 54px;
-  font-size: 18px;
-  padding: 14px 48px;
-}
 
 /* ==================== FOOTER ==================== */
 
@@ -553,7 +549,7 @@ html, body {
 @media (max-width: 360px) {
  
   .logo-circle { width: 180px; height: 180px; }
-  .catalog-label { font-size: 17px; }
+ 
   .btn { font-size: 18px; min-height: 56px; }
   .btn-phone { font-size: 19px; }
   .social-btn { width: 64px; height: 64px; }
@@ -562,7 +558,7 @@ html, body {
 }
 
 @media (max-width: 320px) {
-  .main-title { font-size: 20px; }
+
   .logo-circle { width: 155px; height: 155px; }
   .social-row { gap: 14px; }
   .social-btn { width: 58px; height: 58px; }
