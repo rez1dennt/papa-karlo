@@ -38,7 +38,7 @@ html, body {
 
 .main-title {
   font-size: 26px;
-  font-weight: 900;
+  font-weight: 600;
   text-align: center;
   line-height: 1.25;
   margin-bottom: 28px;
@@ -145,7 +145,7 @@ html, body {
 
 .section-title {
   font-size: 21px;
-  font-weight: 900;
+  font-weight: 600;
   text-align: center;
   letter-spacing: -0.2px;
 }
@@ -343,17 +343,18 @@ html, body {
 
 .photo-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2px;
-  padding: 0 2px 2px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 6px;
+  padding: 0 10px 6px;
 }
 
 .photo-item {
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 4 / 3;
   overflow: hidden;
   cursor: pointer;
   background: #c8c8c8;
   position: relative;
+  border-radius: 10px;
 }
 
 .photo-item img {
@@ -361,11 +362,11 @@ html, body {
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.15s;
+  transition: transform 0.18s;
 }
 
 .photo-item:active img {
-  transform: scale(0.96);
+  transform: scale(0.97);
 }
 
 .photo-placeholder {
@@ -378,6 +379,43 @@ html, body {
   color: #aaaaaa;
   font-size: 12px;
   font-weight: 600;
+}
+
+/* ---- Бейдж цены на фото в сетке ---- */
+.price-badge {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  background: rgba(10, 10, 10, 0.72);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  color: #ffffff;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 5px 11px;
+  border-radius: 20px;
+  letter-spacing: 0.2px;
+  pointer-events: none;
+}
+
+/* ---- Цена в лайтбоксе ---- */
+.lb-price {
+  position: absolute;
+  bottom: 14px;
+  left: 14px;
+  background: rgba(10, 10, 10, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #ffffff;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  padding: 14px 18px;
+  border-radius: 24px;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+  pointer-events: none;
 }
 
 /* ==================== CATALOG BOTTOM ==================== */
@@ -422,9 +460,17 @@ html, body {
   padding: 70px 0 56px;
 }
 
-.lightbox-img {
+.lb-img-box {
+  position: relative;
   max-width: 94%;
   max-height: 100%;
+  display: flex;
+  line-height: 0;
+}
+
+.lightbox-img {
+  width: 100%;
+  max-height: calc(100vh - 126px);
   object-fit: contain;
   display: block;
   border-radius: 10px;

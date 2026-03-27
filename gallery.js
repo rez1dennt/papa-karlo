@@ -1,38 +1,46 @@
 /* gallery.js — ES6+ */
 
-const folder  = document.currentScript.dataset.folder ?? './images/kuhni/';
-const max     = parseInt(document.currentScript.dataset.max ?? '50', 10);
-const grid    = document.getElementById('photoGrid');
-const lb      = document.getElementById('lightbox');
-const lbImg   = document.getElementById('lightboxImg');
-const lbCnt   = document.getElementById('lightboxCounter');
+const folder = document.currentScript.dataset.folder ?? './images/kuhni/';
+const grid   = document.getElementById('photoGrid');
+const lb     = document.getElementById('lightbox');
+const lbImg  = document.getElementById('lightboxImg');
+const lbCnt  = document.getElementById('lightboxCounter');
 
-let photos  = [];
+let photos  = []; // [{ src, price }]
 let current = 0;
 
-/* ---- сетка ---- */
-for (let i = 1; i <= max; i++) {
-  const src  = `${folder}${i}.jpg`;
-  const item = document.createElement('div');
-  item.className    = 'photo-item';
-  item.style.display = 'none';
-  item.dataset.src  = src;
+/* ---- загружаем манифест ---- */
+fetch(`${folder}photos.json`)
+  .then(r => r.json())
+  .then(files => {
+    if (!files.length) return;
 
-  const img = document.createElement('img');
-  img.alt = '';
+    photos = files.map(f => ({
+      src:   `${folder}${f.file}`,
+      price: f.price ?? null,
+    }));
 
-  img.onload = () => {
-    item.style.display = '';
-    item.addEventListener('click', () => open(photos.indexOf(src)));
-    photos.push(src);
-  };
+    photos.forEach(({ src, price }, idx) => {
+      const item = document.createElement('div');
+      item.className = 'photo-item';
 
-  img.onerror = () => item.remove();
-  img.src = src;
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = '';
+      item.appendChild(img);
 
-  item.appendChild(img);
-  grid.appendChild(item);
-}
+      if (price) {
+        const badge = document.createElement('div');
+        badge.className = 'price-badge';
+        badge.textContent = price;
+        item.appendChild(badge);
+      }
+
+      item.addEventListener('click', () => open(idx));
+      grid.appendChild(item);
+    });
+  })
+  .catch(() => {});
 
 /* ---- лайтбокс ---- */
 const open = (idx) => {
@@ -49,9 +57,24 @@ const close = () => {
   document.body.style.overflow = '';
 };
 
+const lbBox = lb.querySelector('.lb-img-box');
+
 const update = () => {
-  lbImg.src = photos[current];
+  const { src, price } = photos[current];
+  lbImg.src = src;
   lbCnt.textContent = `${current + 1} / ${photos.length}`;
+
+  let lbPrice = lbBox.querySelector('.lb-price');
+  if (price) {
+    if (!lbPrice) {
+      lbPrice = document.createElement('div');
+      lbPrice.className = 'lb-price';
+      lbBox.appendChild(lbPrice);
+    }
+    lbPrice.textContent = price;
+  } else if (lbPrice) {
+    lbPrice.remove();
+  }
 };
 
 const prev = () => { current = (current - 1 + photos.length) % photos.length; update(); };
