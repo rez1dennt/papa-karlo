@@ -37,7 +37,7 @@ html, body {
 }
 
 .main-title {
-  font-size: 26px;
+  font-size: 21px;
   font-weight: 600;
   text-align: center;
   line-height: 1.25;
@@ -64,7 +64,7 @@ html, body {
 
 .catalog-label {
   font-size: 19px;
-  font-weight: 700;
+  font-weight: 600;
   text-align: center;
   line-height: 1.45;
   margin-bottom: 6px;
@@ -99,7 +99,7 @@ html, body {
   border-radius: 36px;
   font-family: 'Montserrat', sans-serif;
   font-size: 19px;
-  font-weight: 700;
+  font-weight: 600;
   text-align: center;
   text-decoration: none;
   border: none;
@@ -121,7 +121,7 @@ html, body {
 
 .btn-phone {
   background: #1a1a1a;
-  color: #f5a623;
+  color: #ffffff;
   font-size: 22px;
   letter-spacing: 1px;
   box-shadow: 0 0 22px rgba(0, 0, 0, 0.22), 0 2px 8px rgba(0, 0, 0, 0.18);
@@ -175,12 +175,12 @@ html, body {
 .social-btn.vk {
   background: #0077FF;
   border-radius: 18px;
+  overflow: hidden;
 }
 
 .social-btn.telegram {
-
   border-radius: 50%;
-  padding: 16px;
+  overflow: hidden;
 }
 
 .social-btn.viber {
@@ -188,17 +188,12 @@ html, body {
   overflow: hidden;
 }
 
-.social-btn svg,
-.social-btn img {
+.social-btn img,
+.social-btn svg {
   width: 100%;
   height: 100%;
   display: block;
-}
-
-.social-btn.telegram svg,
-.social-btn.telegram img {
-  width: 100%;
-  height: 100%;
+  object-fit: cover;
 }
 
 .btn-reviews {
@@ -304,7 +299,7 @@ html, body {
   display: inline-block;
   color: #f5a623;
   font-size: 10px;
-  font-weight: 700;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.9px;
   margin-right: 7px;
@@ -336,7 +331,7 @@ html, body {
 
 .catalog-intro p {
   font-size: 17px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1.55;
   text-align: center;
 }
@@ -392,7 +387,7 @@ html, body {
   color: #ffffff;
   font-family: 'Montserrat', sans-serif;
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 600;
   padding: 5px 11px;
   border-radius: 20px;
   letter-spacing: 0.2px;
@@ -556,7 +551,7 @@ html, body {
 /* ==================== SMALL PHONES ==================== */
 
 @media (max-width: 360px) {
-  .main-title { font-size: 23px; }
+ 
   .logo-circle { width: 180px; height: 180px; }
   .catalog-label { font-size: 17px; }
   .btn { font-size: 18px; min-height: 56px; }
